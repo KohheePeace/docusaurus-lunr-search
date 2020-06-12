@@ -49,12 +49,12 @@ function generateLunrClientJS(language = "en") {
 
 function getFilePaths(routesPaths, outDir, baseUrl) {
     const files = []
-    const isExcludedRoute =
+    routesPaths.forEach((route) => {
+      const isExcludedRoute =
       /\/docs\/ja\//.test(route) ||
       /\/docs\/the-complete-webdev-with-rails-2020\//.test(route) ||
       /\/docs\/crud2a-react-react-router\//.test(route);
-
-    routesPaths.forEach((route) => {
+      
         if (route === baseUrl || route === `${baseUrl}404.html` || isExcludedRoute) return;
         route = route.substr(baseUrl.length);
         files.push({
